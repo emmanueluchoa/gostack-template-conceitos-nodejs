@@ -33,14 +33,14 @@ app.get(
 
 app.post('/repositories', (request, response) => {
   try {
-    let { title, url, techs } = request.body;
+    let { title, url, techs, id } = request.body;
 
     if (!title) throw error('Title must be provided!');
     if (!url) throw error('Url repository must be provided!');
     if (!techs) throw error('Techs repository must be provided!');
 
     let repository = {
-      id: uuid(),
+      id: id ? id : uuid(),
       title,
       url,
       techs,
